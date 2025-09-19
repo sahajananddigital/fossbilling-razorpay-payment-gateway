@@ -124,9 +124,10 @@ class Payment_Adapter_Razorpay extends Payment_AdapterAbstract implements \FOSSB
         $payGatewayService = $this->di['mod_service']('Invoice', 'PayGateway');
         $payGateway = $this->di['db']->findOne('PayGateway', 'gateway = "Razorpay"');
         $callbackUrl = $payGatewayService->getCallbackUrl($payGateway, $invoice);
+        $doesRedirect = true;
 
         $form = '
-        <form action="' . $callbackUrl . '" method="POST">
+        <form action="' . $callbackUrl .'&redirect='. $doesRedirect .'&invoice_hash='. $invoice->hash .'" method="POST">
           <script src="https://checkout.razorpay.com/v1/checkout.js"
                   data-key="' . $keyId . '"
                   data-amount="' . $this->getAmountInPaise($invoice) . '"

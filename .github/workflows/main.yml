@@ -24,7 +24,8 @@ jobs:
       - name: Prepare package
         run: |
           mkdir -p build/Razorpay
-          cp src/RazorPay.php build/Razorpay/
+          cp src/Razorpay.php build/Razorpay/
+          cp src/Razorpay.php build/Razorpay/
           cp -r vendor build/Razorpay/
 
       - name: Create ZIP package
