@@ -89,15 +89,6 @@ class Payment_Adapter_Razorpay extends Payment_AdapterAbstract implements \FOSSB
                         'required' => false,
                     ],
                 ],
-                'test_mode' => [
-                    'select', [
-                        'label' => 'Enable Test Mode?',
-                        'multiOptions' => [
-                            0 => 'No',
-                            1 => 'Yes',
-                        ],
-                    ],
-                ],
             ],
         ];
     }
