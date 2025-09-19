@@ -1,4 +1,4 @@
-name: Build & Release
+name: Build & Release Gateway
 
 on:
   release:
@@ -21,20 +21,22 @@ jobs:
       - name: Install dependencies
         run: composer install --no-dev --optimize-autoloader
 
-      - name: Create build folder
-        run: mkdir -p build
+      - name: Prepare package
+        run: |
+          mkdir -p build/Razorpay
+          cp src/RazorPay.php build/Razorpay/
+          cp composer.json build/Razorpay/
+          cp composer.lock build/Razorpay/ || true
+          cp -r vendor build/Razorpay/
 
       - name: Create ZIP package
         run: |
-          zip -r build/${{ github.event.repository.name }}-${{ github.ref_name }}.zip . \
-            -x "*.git*" \
-               ".github/*" \
-               "tests/*" \
-               "node_modules/*"
+          cd build
+          zip -r ../${{ github.event.repository.name }}-${{ github.ref_name }}.zip Razorpay
 
       - name: Upload Release Asset
         uses: softprops/action-gh-release@v2
         with:
-          files: build/*.zip
+          files: ./*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
