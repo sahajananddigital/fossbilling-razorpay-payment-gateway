@@ -1,0 +1,25 @@
+{
+    "name": "sahajananddigital/fossbilling-razorpay-payment-gateway",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Sahajanand Digital",
+            "email": "hello@sahajananddigital.in"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "ext-json": "*",
+        "razorpay/razorpay": "^2.9"
+    },
+    "scripts": {
+        "build": [
+        "@composer --no-plugins --no-interaction install --no-scripts --no-dev",
+        "@composer --no-plugins --no-interaction archive"
+        ]
+    },
+    "scripts-descriptions": {
+        "build": "Build project artifact."
+    }
+    
+}
