@@ -13,12 +13,14 @@
         "razorpay/razorpay": "^2.9"
     },
     "scripts": {
+        "test": "php tests/test_gateway.php",
         "build": [
         "@composer --no-plugins --no-interaction install --no-scripts --no-dev",
         "@composer --no-plugins --no-interaction archive"
         ]
     },
     "scripts-descriptions": {
+        "test": "Run gateway test suite.",
         "build": "Build project artifact."
     }
     
